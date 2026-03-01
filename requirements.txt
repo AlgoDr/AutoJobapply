@@ -1,0 +1,19 @@
+# Core web framework
+fastapi==0.116.1
+uvicorn==0.22.0
+
+# HTTP requests & async calls
+httpx==0.28.1
+requests==2.32.5
+
+# Google AI + Cloud
+google-generativeai==0.8.5
+vertexai>=1.71.0
+google-cloud-firestore==2.15.0
+google-cloud-storage==2.14.0
+
+# Environment variables
+python-dotenv==1.0.1
+
+# PDF generation
+fpdf==1.7.2

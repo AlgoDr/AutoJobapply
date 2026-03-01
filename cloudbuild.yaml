@@ -1,0 +1,16 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', '$REGION-docker.pkg.dev/$PROJECT_ID/job-agent-repo/job-agent:latest', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', '$REGION-docker.pkg.dev/$PROJECT_ID/job-agent-repo/job-agent:latest']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args:
+      - run
+      - deploy
+      - job-agent
+      - --image=$REGION-docker.pkg.dev/$PROJECT_ID/job-agent-repo/job-agent:latest
+      - --platform=managed
+      - --region=$REGION
+      - --allow-unauthenticated
+images:
+  - '$REGION-docker.pkg.dev/$PROJECT_ID/job-agent-repo/job-agent:latest'
